@@ -7,7 +7,7 @@
 // http://xxxxxxxxx/thermostat_switch_planning.php?plan=1    remplacer 1 par votre ID de planning
 
 
-$planning=$_GET['plan'];   // Non du planning
+$planning=$_GET['plan'];   // ID du planning
 
 
 $password='xxxxxxxx';
@@ -59,11 +59,13 @@ $device3 = $json_devices["body"]["devices"][2]["_id"];
 $module3 = $json_devices["body"]["modules"][2]["_id"];
 
 
-// Non utilisé pour l'instant
-//$url_thermostat1="http://api.netatmo.net/api/getthermstate?access_token=" .  $params['access_token']."&device_id=".$device1."&module_id=".$module1;
-//$value_thermostat1= file_get_contents($url_thermostat1);
-//$json_mesures_thermostat1 = json_decode($value_thermostat1, true);
-//$progid = $json_mesures_thermostat1["body"]["therm_program_backup"]["timetable"]["program_id"];
+// Pour trouver l'ID du programme ( a executer dans votre navigateur)
+$url_thermostat1="http://api.netatmo.net/api/getthermstate?access_token=" .  $params['access_token']."&device_id=".$device1."&module_id=".$module1;
+$value_thermostat1= file_get_contents($url_thermostat1);
+
+echo "</br>";
+echo $value_thermostat1;
+echo "</br>";
 
 	
 $url="/api/switchschedule?access_token=" . $params['access_token']."&device_id=".$device1."&module_id=".$module1."&schedule_id=".$planning;
